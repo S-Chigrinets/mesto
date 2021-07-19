@@ -1,0 +1,9 @@
+.elements{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    
+    padding-top: 51px;
+    row-gap: 20px;
+    column-gap: 17px;
+}

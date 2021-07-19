@@ -1,0 +1,15 @@
+.profile__button-edit{
+    background-image: url(../../../images/pancil-profile.svg);
+
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: auto;
+
+    border: 1px solid white;
+    background-color: inherit;
+
+
+    width: 24px;
+    height: 24px;
+}

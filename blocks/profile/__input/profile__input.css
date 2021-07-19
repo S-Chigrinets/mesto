@@ -1,0 +1,11 @@
+.profile__input {
+    display: flex;
+    flex-direction: row;
+    max-width: 336px;
+
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: center;
+
+    padding-left: 30px;
+}

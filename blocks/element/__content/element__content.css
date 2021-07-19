@@ -1,0 +1,8 @@
+.element__content{
+    display: flex;
+    flex-direction: row;
+    max-width: 282px;
+    background-color: #ffffff;
+    align-items: center;
+    justify-content: space-between;
+}
