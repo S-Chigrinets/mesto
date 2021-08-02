@@ -1,10 +1,27 @@
-.profile__input-name{
+.profile__input-name {
     font-family: Inter;
-font-style: normal;
-font-weight: 500;
-font-size: 42px;
-line-height: 48px;
-    margin:0;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 42px;
+    line-height: 48px;
+    margin: 0;
+    ;
+}
 
-    padding-right: 24px;
+@media screen and (min-width:321px) and (max-width: 767px) {
+    .profile__input-name {
+        font-size: 34px;
+    }
+}
+
+@media screen and (max-width:321px) {
+    .profile__input-name {
+        font-family: Inter;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 27px;
+        line-height: 33px;
+        text-align: center;
+        color: #FFFFFF;
+    }
 }

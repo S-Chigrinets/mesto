@@ -1,11 +1,15 @@
 .profile__input {
     display: flex;
     flex-direction: row;
-    max-width: 336px;
-
+    max-width: 294px;
     flex-wrap: wrap;
     align-content: center;
     align-items: center;
+    justify-content: flex-start;
+}
 
-    padding-left: 30px;
+@media screen and (max-width:597px) {
+    .profile__input {
+        justify-content: center;
+    }
 }

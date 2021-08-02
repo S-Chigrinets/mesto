@@ -1,22 +1,5 @@
 .header {
     display: flex;
     min-height: 52px;
-    
     max-width: 880px;
-}
-
-@media screen and (min-width: 1281px) {
-
-}
-
-@media screen and (min-width:321px) and (max-width: 768px) {
-    
-}
-
-@media screen and (min-width:321px) and (max-width:767px) {
-    
-}
-
-@media screen and (max-width:320px) {
-    
 }

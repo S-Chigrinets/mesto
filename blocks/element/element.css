@@ -1,6 +1,18 @@
-.element{
+.element {
     display: flex;
     flex-direction: column;
     border-radius: 4%;
     overflow: hidden;
+}
+
+@media screen and (max-width:1023px) {
+    .element {
+        max-width: 30%;
+    }
+}
+
+@media screen and (max-width:767px) {
+    .element {
+        max-width: 282px;
+    }
 }
