@@ -21,7 +21,7 @@
 
 **https://github.com/S-Chigrinets/mesto.git**
 
-**Обязательно запилю сюда вторую ссылку, только уже завтра**
+**https://s-chigrinets.github.io/mesto/**
 ***
 
 
