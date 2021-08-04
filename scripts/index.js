@@ -1,58 +1,39 @@
 const popupButtonEdit = document.querySelector('.profile__button-edit');
+// кнопка открытия попапа редактирования "имя" и "о себе"
 const popupButtonClose = document.querySelector('.popup__button-close');
-const popupButtonSave = document.querySelector('.popup__button-save');
-
-const buttonAdd = document.querySelector('.profile__button-add');
-const buttonLike = document.querySelector('.element__button-like');
-
+// кнопка закрытия попапа редактирования "имя" и "о себе"
 const popup = document.querySelector('.popup');
 
-let popupText = document.querySelector('.popup__input-text');
-let popupName = document.querySelector('.popup__input-name');
+let popupText = document.querySelector('.popup_input_text');
+let popupName = document.querySelector('.popup_input_name');
 let popupForm = document.querySelector('.popup__form');
 let profileText = document.querySelector('.profile__input-about-me');
 let profileName = document.querySelector('.profile__input-name');
 
-
-function popupOpen () {
+function openPopup()
+// функция открытия попапа редактирования "имя" и "о себе"
+ {
     popup.classList.add('popup_is-opened');
     popupText.value = profileText.textContent;
     popupName.value = profileName.textContent;
 }
-popupButtonEdit.addEventListener('click', popupOpen);
 
-function popupClose () {
+
+function closePopup()
+// функция закрытия попапа редактирования "имя" и "о себе"
+{
     popup.classList.remove('popup_is-opened');
 }
 
-popupButtonClose.addEventListener('click', popupClose);
-
-
-function submitForm (evt) {
+function submitForm(evt)
+// функция отправки формы(в профиль) и закрытия попапа редактирования "имя" и "о себе"
+{
     evt.preventDefault();
     profileText.textContent = popupText.value;
     profileName.textContent = popupName.value;
-    popupClose();
-      
+    closePopup();
 
 }
-    popupForm.addEventListener('submit', submitForm)
-   
-
-
-
-
-
-    
-
-
-
-
-
-console.log(popupButtonEdit, popupButtonClose, popupButtonSave, buttonAdd, buttonLike);
-
-
-
-
-
-   
+popupButtonEdit.addEventListener('click', openPopup);
+popupButtonClose.addEventListener('click', closePopup);
+popupForm.addEventListener('submit', submitForm);

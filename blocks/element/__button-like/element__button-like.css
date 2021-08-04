@@ -9,7 +9,7 @@
 }
 
 .element__button-like:hover {
-    opacity: .6;
+    opacity: .5;
 }
 
 .element__button-like:focus {

@@ -7,15 +7,24 @@
     border: 1px solid white;
     background-color: inherit;
     cursor: pointer;
+    border-radius: 2px;
 }
 
 @media screen and (max-width:321px) {
     .profile__button-add {
         margin-top: 35px;
         width: 88%;
+        background-size: 16px;
     }
 }
 
 .profile__button-add:hover {
     opacity: .6;
+}
+
+@media screen and (min-width: 321px) and (max-width: 767px) {
+    .profile__button-add {
+        width: 130px;
+        height: 45px;
+    }
 }

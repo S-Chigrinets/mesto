@@ -9,24 +9,20 @@
     text-align: center;
     background-color: #000000;
     color: #FFFFFF;
-    margin-top: 14%;
+    margin-top: 45px;
     cursor: pointer;
+    border-radius: 2px;
 }
 
 @media screen and (max-width:321px) {
     .popup__button-save {
-        font-family: Inter, 'Helvetica Neue', Arial, sans-serif;
-        font-style: normal;
-        font-weight: normal;
         font-size: 14px;
         line-height: 17px;
-        text-align: center;
-        color: #FFFFFF;
         margin-top: 18%;
         height: 48px;
     }
 }
 
 .popup__button-save:hover {
-    opacity: .6;
+    opacity: .8;
 }

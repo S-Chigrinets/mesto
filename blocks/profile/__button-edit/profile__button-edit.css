@@ -15,7 +15,7 @@
     .profile__button-edit {
         position: absolute;
         top: 8px;
-        right: 25px;
+        right: -27px;
         width: 18px;
         height: 18px;
     }

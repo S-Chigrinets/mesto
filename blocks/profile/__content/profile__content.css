@@ -3,8 +3,9 @@
     flex-direction: row;
     align-items: baseline;
     max-width: 336px;
-    justify-content: center;
     gap: 18px;
+
+    justify-content: space-between;
 }
 
 @media screen and (max-width:598px) {
