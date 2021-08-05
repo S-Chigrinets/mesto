@@ -9,8 +9,7 @@
 }
 
 @media screen and (max-width:321px) {
-    .header{
+    .header {
         grid-template-rows: repeat(3, 27px);
     }
-    
 }

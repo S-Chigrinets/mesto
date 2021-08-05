@@ -8,22 +8,20 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+    color: #FFFFFF;
 }
 
 @media screen and (min-width:321px) and (max-width: 767px) {
     .profile__input-name {
         font-size: 34px;
+        text-align: center;
     }
 }
 
 @media screen and (max-width:321px) {
     .profile__input-name {
-        font-family: Inter, 'Helvetica Neue', Arial, sans-serif;
-        font-style: normal;
-        font-weight: 500;
         font-size: 27px;
         line-height: 33px;
         text-align: center;
-        color: #FFFFFF;
     }
 }

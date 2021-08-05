@@ -12,6 +12,12 @@
     overflow: hidden;
 }
 
+@media screen and (min-width:321px) and (max-width: 767px) {
+    .profile__input-about-me {
+        text-align: center;
+    }
+}
+
 @media screen and (max-width:321px) {
     .profile__input-about-me {
         font-size: 14px;
