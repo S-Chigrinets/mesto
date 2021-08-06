@@ -9,6 +9,12 @@
 @media screen and (max-width:597px) {
     .profile__input {
         justify-content: center;
+       
+    }
+}
+
+@media screen and (max-width:310px){
+    .profile__input{
         max-width: 59vw;
     }
 }
