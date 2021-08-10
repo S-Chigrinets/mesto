@@ -1,3 +1,8 @@
+
+  
+
+       
+ 
 const popupButtonEdit = document.querySelector('.profile__button-edit');
 // кнопка открытия попапа редактирования "имя" и "о себе"
 const popupButtonClose = document.querySelector('.popup__button-close');
@@ -60,3 +65,47 @@ function submitForm(evt)
 popupButtonEdit.addEventListener('click', openPopup);
 popupButtonClose.addEventListener('click', closePopup);
 popupForm.addEventListener('submit', submitForm);
+
+
+
+
+const initialCards = [
+    {
+      name: 'Архыз',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+    },
+    {
+      name: 'Челябинская область',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+    },
+    {
+      name: 'Иваново',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+    },
+    {
+      name: 'Камчатка',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+    },
+    {
+      name: 'Холмогорский район',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+    },
+    {
+      name: 'Байкал',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+    }
+  ]; 
+
+  const elements = document.querySelector('.elements');
+
+  initialCards.forEach(function addCard(elem)
+   {   
+        const elementTemplate = document.getElementById('place-template').content; 
+        const placeElement = elementTemplate.firstElementChild.cloneNode(true);
+        placeElement.querySelector('.element__image').src = elem.link;
+        placeElement.querySelector('.element__title').textContent = elem.name;
+        placeElement.querySelector('.element__image').alt = elem.name;
+        elements.append(placeElement);
+});
+
+
