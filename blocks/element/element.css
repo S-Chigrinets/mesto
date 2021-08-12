@@ -3,11 +3,8 @@
     flex-direction: column;
     border-radius: 10px;
     overflow: hidden;
-
     position: relative;
-
-
-    max-width: 282px ;
+    max-width: 282px;
 }
 
 @media screen and (max-width:1023px) {
