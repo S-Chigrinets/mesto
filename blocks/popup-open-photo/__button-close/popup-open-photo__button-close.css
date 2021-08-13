@@ -1,0 +1,26 @@
+.popup-open-photo__button-close {
+    width: 32px;
+    height: 32px;
+    background-image: url(../../../images/cross-close.svg);
+    background-position: center;
+    border: none;
+    position: absolute;
+    right: -40px;
+    top: -40px;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+@media screen and (max-width:530px) {
+    .popup__button-close {
+        width: 20px;
+        height: 20px;
+        right: 0;
+        top: -37px;
+        background-size: cover;
+    }
+}
+
+.popup-open-photo__button-close:hover {
+    opacity: .6;
+}
