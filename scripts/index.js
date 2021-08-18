@@ -19,7 +19,6 @@ const clickOnImg = document.querySelector('.element__image');
 const openImg = document.querySelector('.popup-open-photo');
 const titleImg = document.querySelector('.element__title');
 
-
 function openPopup(popup) //функция открытия попапа
 {
     popup.classList.add('popup_is-opened');
@@ -35,7 +34,6 @@ function openPopupPrefiling() // функция предварительного
     popupText.value = profileText.textContent;
     popupName.value = profileName.textContent;
 }
-
 
 function submitForm(evt) // функция отправки формы(в профиль) и закрытия попапа редактирования "имя" и "о себе"
 {
@@ -73,17 +71,12 @@ const initialCards = [
 ];
 
 const elements = document.querySelector('.elements');
-
-
 const elementTemplate = document.getElementById('place-template').content;
 const placeElement = elementTemplate.firstElementChild.cloneNode(true);
 
-
 function createCard(data) {
-
     const elementTemplate = document.getElementById('place-template').content;
     const placeElement = elementTemplate.firstElementChild.cloneNode(true);
-
     const placeElementImage = placeElement.querySelector('.element__image');
     const placeElementTitle = placeElement.querySelector('.element__title');
 
