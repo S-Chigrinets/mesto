@@ -3,12 +3,12 @@ const popupButtonClose = document.querySelector('.popup__button-close'); // кн
 const popup = document.querySelector('.popup');
 const popupButtonAdd = document.querySelector('.profile__button-add');
 const popupPlaceButtonClose = document.querySelector('.popup-place__button-close');
-let popupText = document.querySelector('.popup__input_text_about-myself');
-let popupName = document.querySelector('.popup__input_text_name');
-let popupForm = document.querySelector('.popup__form');
-let popupFormPlace = document.querySelector('.popup__form-place')
-let profileText = document.querySelector('.profile__input-about-me');
-let profileName = document.querySelector('.profile__input-name');
+const popupText = document.querySelector('.popup__input_text_about-myself');
+const popupName = document.querySelector('.popup__input_text_name');
+const popupForm = document.querySelector('.popup__form');
+const popupFormPlace = document.querySelector('.popup__form-place')
+const profileText = document.querySelector('.profile__input-about-me');
+const profileName = document.querySelector('.profile__input-name');
 const popupPlace = document.querySelector('.popup-place');
 const popupSubmitPlace = document.querySelector('.popup__input_text_place');
 const popupLink = document.querySelector('.popup__input_text_link');
@@ -16,7 +16,7 @@ const popupLink = document.querySelector('.popup__input_text_link');
 const popupImgCont = document.querySelector('.popup-open-photo__container');
 const buttonCloseImg = document.querySelector('.popup-open-photo__button-close');
 const clickOnImg = document.querySelector('.element__image');
-const openImg = document.querySelector('.popup-open-photo');
+const popupImg = document.querySelector('.popup-open-photo');
 const titleImg = document.querySelector('.element__title');
 
 function openPopup(popup) //функция открытия попапа
@@ -31,8 +31,10 @@ function closePopup(popup) // функция закрытия попапа
 
 function openPopupPrefiling() // функция предварительного заполнения попапа редактирования "имя" и "о себе"
 {
+    openPopup(popup);
     popupText.value = profileText.textContent;
     popupName.value = profileName.textContent;
+    
 }
 
 function submitForm(evt) // функция отправки формы(в профиль) и закрытия попапа редактирования "имя" и "о себе"
@@ -40,8 +42,7 @@ function submitForm(evt) // функция отправки формы(в про
     evt.preventDefault();
     profileText.textContent = popupText.value;
     profileName.textContent = popupName.value;
-    closePopup(popup);
-    popupForm.reset();
+    closePopup(popup); 
 }
 const initialCards = [
     {
@@ -81,32 +82,33 @@ function createCard(data) {
     const placeElementTitle = placeElement.querySelector('.element__title');
 
     placeElementImage.src = data.link;
+    placeElementImage.alt = data.name;
     placeElementTitle.textContent = data.name;
 
     placeElement.querySelector('.element__button-delete').addEventListener('click', (e) => { e.target.closest('.element').remove() });
-    elements.prepend(placeElement);
     closePopup(popupPlace);
 
-    placeElement.querySelector('.element__button-like').addEventListener('click', (likeActive) => { placeElement.querySelector('.element__button-like').classList.toggle('element__button-like_active') });
+    const likeButton = placeElement.querySelector('.element__button-like');
+    likeButton.addEventListener('click', () => { likeButton.classList.toggle('element__button-like_active')});
+
 
     const popupImgCont = document.querySelector('.popup-open-photo__container');
     const buttonCloseImg = document.querySelector('.popup-open-photo__button-close');
-    const clickOnImg = document.querySelector('.element__image');
     const openImg = document.querySelector('.popup-open-photo');
     const titleImg = document.querySelector('.element__title');
 
     function openPopupImg() // функция открытия попапа "Открыть картинку"
     {
-        openImg.classList.add('popup-open-photo_is-opened');
-        popupImgCont.querySelector('.popup-open-photo__img').src = clickOnImg.src;
-        popupImgCont.querySelector('.popup-open-photo__img').alt = clickOnImg.alt;
-        popupImgCont.querySelector('.popup-open-photo__title').alt = titleImg;
+        openPopup(popupImg)
+        popupImgCont.querySelector('.popup-open-photo__img').src = data.link;
+        popupImgCont.querySelector('.popup-open-photo__img').alt = data.name;
+        popupImgCont.querySelector('.popup-open-photo__title').textContent = data.name;
     } 
-    clickOnImg.addEventListener('click', openPopupImg)
+    placeElementImage.addEventListener('click', openPopupImg)
     return placeElement;
 }
 
-const newCard = (evt) => {//Функция добавления новой карточки
+const createNewCard = (evt) => {//Функция добавления новой карточки
     evt.preventDefault();
     const cardElem = createCard({
         name: popupSubmitPlace.value,
@@ -114,7 +116,7 @@ const newCard = (evt) => {//Функция добавления новой ка�
     });
     elements.prepend(cardElem);
     closePopup(popupPlace);
-    popupForm.reset();
+    popupFormPlace.reset();
 }
 
 initialCards.forEach((data) => {
@@ -124,12 +126,12 @@ initialCards.forEach((data) => {
 
 function closePopupImg() // функция закрытия попапа "Открыть картинку"
     {
-        openImg.classList.remove('popup-open-photo_is-opened');
+        closePopup(popupImg);
     }
 buttonCloseImg.addEventListener('click', closePopupImg)
 popupForm.addEventListener('submit', submitForm);
-popupPlace.addEventListener('submit', newCard);
-popupButtonEdit.addEventListener('click', () => openPopup(popup))
-popupButtonAdd.addEventListener('click', () => openPopup(popupPlace), openPopupPrefiling())
+popupPlace.addEventListener('submit', createNewCard);
+popupButtonEdit.addEventListener('click', () =>  openPopupPrefiling())
+popupButtonAdd.addEventListener('click', () => openPopup(popupPlace))
 popupButtonClose.addEventListener('click', () => closePopup(popup))
 popupPlaceButtonClose.addEventListener('click', () => closePopup(popupPlace))
