@@ -44,39 +44,11 @@ function submitForm(evt) // функция отправки формы(в про
     profileName.textContent = popupName.value;
     closePopup(popup); 
 }
-const initialCards = [
-    {
-        name: 'Архыз',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-    },
-    {
-        name: 'Челябинская область',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-    },
-    {
-        name: 'Иваново',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-    },
-    {
-        name: 'Камчатка',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-    },
-    {
-        name: 'Холмогорский район',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-    },
-    {
-        name: 'Байкал',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-    }
-];
 
 const elements = document.querySelector('.elements');
 const elementTemplate = document.getElementById('place-template').content;
-const placeElement = elementTemplate.firstElementChild.cloneNode(true);
 
 function createCard(data) {
-    const elementTemplate = document.getElementById('place-template').content;
     const placeElement = elementTemplate.firstElementChild.cloneNode(true);
     const placeElementImage = placeElement.querySelector('.element__image');
     const placeElementTitle = placeElement.querySelector('.element__title');
@@ -90,12 +62,6 @@ function createCard(data) {
 
     const likeButton = placeElement.querySelector('.element__button-like');
     likeButton.addEventListener('click', () => { likeButton.classList.toggle('element__button-like_active')});
-
-
-    const popupImgCont = document.querySelector('.popup-open-photo__container');
-    const buttonCloseImg = document.querySelector('.popup-open-photo__button-close');
-    const openImg = document.querySelector('.popup-open-photo');
-    const titleImg = document.querySelector('.element__title');
 
     function openPopupImg() // функция открытия попапа "Открыть картинку"
     {
@@ -115,7 +81,6 @@ const createNewCard = (evt) => {//Функция добавления новой
         link: popupLink.value,
     });
     elements.prepend(cardElem);
-    closePopup(popupPlace);
     popupFormPlace.reset();
 }
 
