@@ -100,4 +100,8 @@ popupButtonEdit.addEventListener('click', () =>  openPopupPrefiling())
 popupButtonAdd.addEventListener('click', () => openPopup(popupPlace)) 
 popupButtonClose.addEventListener('click', () => closePopup(popup)) 
 popupPlaceButtonClose.addEventListener('click', () => closePopup(popupPlace)) 
+popup.addEventListener('click', closePopup)
+
+
+
  
