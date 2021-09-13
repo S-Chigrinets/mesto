@@ -32,10 +32,10 @@ const hasNotInputValues = (inputList) => {
     });
 };
 
-const disableSubmitButton = (buttonElement, inactiveButtonClass) => {
+ const disableSubmitButton = (buttonElement, inactiveButtonClass) => {
     buttonElement.classList.add(inactiveButtonClass);
 
-};
+}
 const enableSubmitButton = (buttonElement, inactiveButtonClass) => {
     buttonElement.classList.remove(inactiveButtonClass);
 };
@@ -87,3 +87,4 @@ enableValidation({
     inputErrorClass: 'popup__input_type_error',
     errorClass: 'popup__input-error_active'
 });
+

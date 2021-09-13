@@ -1,6 +1,9 @@
 const popupButtonEdit = document.querySelector('.profile__button-edit'); // кнопка открытия попапа редактирования "имя" и "о себе" 
 const popupButtonClose = document.querySelector('.popup__button-close'); // кнопка закрытия попапа редактирования "имя" и "о себе" 
 const popup = document.querySelector('.popup');
+
+const profilePopup = document.querySelector('.profile_popup');
+
 const popupButtonAdd = document.querySelector('.profile__button-add');
 const popupPlaceButtonClose = document.querySelector('.popup-place__button-close');
 const popupText = document.querySelector('.popup__input_text_about-myself');
@@ -12,31 +15,35 @@ const profileName = document.querySelector('.profile__input-name');
 const popupPlace = document.querySelector('.popup-place');
 const popupSubmitPlace = document.querySelector('.popup__input_text_place');
 const popupLink = document.querySelector('.popup__input_text_link');
-
 const popupImgCont = document.querySelector('.popup-open-photo__container');
 const buttonCloseImg = document.querySelector('.popup-open-photo__button-close');
 const clickOnImg = document.querySelector('.element__image');
 const popupImg = document.querySelector('.popup-open-photo');
 const titleImg = document.querySelector('.element__title');
 
-let popupIsOpened;
+
+popupImgCont.querySelector('.popup-open-photo__img').src = data.link;
+        popupImgCont.querySelector('.popup-open-photo__img').alt = data.name;
+
+let openedPopup;
 
 function openPopup(popup) //функция открытия попапа 
 {
     popup.classList.add('popup_is-opened');
     document.addEventListener('keydown', closePopupKeydownkEsc);
-    popupIsOpened = popup;
-    popup.addEventListener('click', closeOverlay)
+    openedPopup = popup;
+    popup.addEventListener('click', closeOverlay);
 }
 
 function closePopup(popup) // функция закрытия попапа 
 {
     popup.classList.remove('popup_is-opened');
     document.removeEventListener('keydown', closePopupKeydownkEsc);
+    popup.removeEventListener('click', closeOverlay);
 }
 
 const closePopupKeydownkEsc = (evt) => { //Функция закрытия попапа по "Esc" 
-    const popup = popupIsOpened;
+    const popup = openedPopup;
     if (evt.key === 'Escape') {
         closePopup(popup);
     };
@@ -45,8 +52,9 @@ const closePopupKeydownkEsc = (evt) => { //Функция закрытия по�
 
 const closeOverlay = (evt) => { //Функция закрытия по клику вне попапа
     if (evt.target.classList.contains('popup')) {
-        const popups = document.querySelector('.popup_is-opened');
-        closePopup(popups);
+
+        const popup = openedPopup;
+        closePopup(popup);
     }
 }
 
@@ -70,7 +78,7 @@ function submitForm(evt) // функция отправки формы(в про
 const elements = document.querySelector('.elements');
 const elementTemplate = document.getElementById('place-template').content;
 
-function createCard(data) { 
+function createCard(data) {
     const placeElement = elementTemplate.firstElementChild.cloneNode(true);
     const placeElementImage = placeElement.querySelector('.element__image');
     const placeElementTitle = placeElement.querySelector('.element__title');
@@ -87,13 +95,17 @@ function createCard(data) {
     function openPopupImg() // функция открытия попапа "Открыть картинку" 
     {
         openPopup(popupImg)
-        popupImgCont.querySelector('.popup-open-photo__img').src = data.link;
-        popupImgCont.querySelector('.popup-open-photo__img').alt = data.name;
+        
         popupImgCont.querySelector('.popup-open-photo__title').textContent = data.name;
     }
     placeElementImage.addEventListener('click', openPopupImg)
     return placeElement;
 }
+
+const disabledButton = document.querySelector('.popup__button-save-place');
+const inactiveButton = (disabledButton) => {
+    disabledButton.classList.add('popup__button-save_inactive')
+};
 
 const createNewCard = (evt) => {//Функция добавления новой карточки 
     evt.preventDefault();
@@ -103,6 +115,7 @@ const createNewCard = (evt) => {//Функция добавления новой
     });
     elements.prepend(cardElem);
     popupFormPlace.reset();
+    inactiveButton(disabledButton)
     closePopup(popupPlace);
 }
 
@@ -116,17 +129,10 @@ function closePopupImg() // функция закрытия попапа "Отк
     closePopup(popupImg);
 }
 
-
-
-
 buttonCloseImg.addEventListener('click', closePopupImg)
 popupForm.addEventListener('submit', submitForm);
 popupPlace.addEventListener('submit', createNewCard);
 popupButtonEdit.addEventListener('click', () => openPopupPrefiling())
-popupButtonAdd.addEventListener('click', () => openPopup(popupPlace))
+popupButtonAdd.addEventListener('click', () => openPopup(popupPlace),)
 popupButtonClose.addEventListener('click', () => closePopup(popup))
 popupPlaceButtonClose.addEventListener('click', () => closePopup(popupPlace))
-popup.addEventListener('click', closePopup)
-
-
-
