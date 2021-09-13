@@ -2,7 +2,7 @@ const popupButtonEdit = document.querySelector('.profile__button-edit'); // кн
 const popupButtonClose = document.querySelector('.popup__button-close'); // кнопка закрытия попапа редактирования "имя" и "о себе" 
 const popup = document.querySelector('.popup');
 
-const profilePopup = document.querySelector('.profile_popup');
+const profilePopup = document.querySelector('.popup-profile');
 
 const popupButtonAdd = document.querySelector('.profile__button-add');
 const popupPlaceButtonClose = document.querySelector('.popup-place__button-close');
@@ -20,10 +20,6 @@ const buttonCloseImg = document.querySelector('.popup-open-photo__button-close')
 const clickOnImg = document.querySelector('.element__image');
 const popupImg = document.querySelector('.popup-open-photo');
 const titleImg = document.querySelector('.element__title');
-
-
-popupImgCont.querySelector('.popup-open-photo__img').src = data.link;
-        popupImgCont.querySelector('.popup-open-photo__img').alt = data.name;
 
 let openedPopup;
 
@@ -49,7 +45,6 @@ const closePopupKeydownkEsc = (evt) => { //Функция закрытия по�
     };
 };
 
-
 const closeOverlay = (evt) => { //Функция закрытия по клику вне попапа
     if (evt.target.classList.contains('popup')) {
 
@@ -58,13 +53,11 @@ const closeOverlay = (evt) => { //Функция закрытия по клик�
     }
 }
 
-
 function openPopupPrefiling() // функция предварительного заполнения попапа редактирования "имя" и "о себе" 
 {
     openPopup(popup);
     popupText.value = profileText.textContent;
     popupName.value = profileName.textContent;
-
 }
 
 function submitForm(evt) // функция отправки формы(в профиль) и закрытия попапа редактирования "имя" и "о себе" 
@@ -95,7 +88,8 @@ function createCard(data) {
     function openPopupImg() // функция открытия попапа "Открыть картинку" 
     {
         openPopup(popupImg)
-        
+        popupImgCont.querySelector('.popup-open-photo__img').src = data.link;
+        popupImgCont.querySelector('.popup-open-photo__img').alt = data.name;
         popupImgCont.querySelector('.popup-open-photo__title').textContent = data.name;
     }
     placeElementImage.addEventListener('click', openPopupImg)
