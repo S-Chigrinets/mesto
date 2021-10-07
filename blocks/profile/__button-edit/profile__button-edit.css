@@ -24,3 +24,6 @@
 .profile__button-edit:hover {
     opacity: .6;
 }
+.profile__button-edit:focus {
+    outline: none;
+}

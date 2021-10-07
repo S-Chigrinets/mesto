@@ -16,3 +16,7 @@
 .element__button-delete:hover {
     opacity: .5;
 }
+
+.element__button-delete:focus {
+    outline: none;
+}

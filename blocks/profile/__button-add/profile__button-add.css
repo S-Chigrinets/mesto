@@ -30,3 +30,7 @@
         margin-top: 20px;
     }
 }
+
+.profile__button-add:focus {
+    outline: none;
+}

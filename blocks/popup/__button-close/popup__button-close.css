@@ -24,3 +24,6 @@
 .popup__button-close:hover {
     opacity: .6;
 }
+.popup__button-close:focus {
+    outline: none;
+}

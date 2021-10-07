@@ -6,8 +6,13 @@
     margin-right: 21px;
     cursor: pointer;
     border: none;
+
 }
 
 .element__button-like:hover {
     opacity: .5;
+}
+
+.element__button-like:focus {
+    outline: none;
 }
