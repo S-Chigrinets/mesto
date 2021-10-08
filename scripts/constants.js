@@ -22,10 +22,8 @@ export const titleImg = document.querySelector('.element__title');
 export const elements = document.querySelector('.elements');
 export const elementTemplate = document.getElementById('place-template').content;
 export const disabledButton = document.querySelector('.popup__button-save-place');
-
 export const previewImgLink = document.querySelector('.popup-open-photo__img');
 export const previewImgTitle = document.querySelector('.popup-open-photo__title');
-
 
 export const validityConfig =({
     formElement: '.popup__form',

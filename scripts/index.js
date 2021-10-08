@@ -1,9 +1,8 @@
 import {initialCards} from './initial-cards.js'
 import Card from './Card.js'
 import FormValidator from './FormValidator.js'
-import {popupButtonEdit, popupButtonClose,  popup, profilePopup, popupButtonAdd, popupPlaceButtonClose, popupText, popupName, popupForm, popupFormPlace, profileText, profileName, popupPlace, popupSubmitPlace, popupLink, buttonCloseImg, popupImg, disabledButton, elements, validityConfig
+import {popupButtonEdit, popupButtonClose, profilePopup, popupButtonAdd, popupPlaceButtonClose, popupText, popupName, popupForm, popupFormPlace, profileText, profileName, popupPlace, popupSubmitPlace, popupLink, buttonCloseImg, popupImg, disabledButton, elements, validityConfig, previewImgLink, previewImgTitle
 } from './constants.js';
-
 
 let openedPopup;
 
@@ -12,8 +11,9 @@ export function openPopup(popup) //функция открытия попапа
     popup.classList.add('popup_is-opened');
     document.addEventListener('keydown', closePopupKeydownkEsc);
     openedPopup = popup;
-    popup.addEventListener('click', closeOverlay);
+    popup.addEventListener('mousedown', closeOverlay);
 }
+
 function closePopup(popup) // функция закрытия попапа 
 {
     popup.classList.remove('popup_is-opened');
@@ -35,7 +35,7 @@ const closeOverlay = (evt) => { //Функция закрытия по клик�
 }
 function openPopupPrefiling() // функция предварительного заполнения попапа редактирования "имя" и "о себе" 
 {
-    openPopup(popup);
+    openPopup(profilePopup);
     popupText.value = profileText.textContent;
     popupName.value = profileName.textContent;
 }
@@ -44,15 +44,23 @@ function submitForm(evt) // функция отправки формы(в про
     evt.preventDefault();
     profileText.textContent = popupText.value;
     profileName.textContent = popupName.value;
-    closePopup(popup);
+    closePopup(profilePopup);
 }
 
+function handleClickImage(name, link) {
+    openPopup(popupImg)
+    previewImgLink.src = link;
+    previewImgLink.alt = name;
+    previewImgTitle.textContent = name;
+  }
+  
 const inactiveButton = (disabledButton) => {
     disabledButton.classList.add('popup__button-save_inactive')
+    disabledButton.setAttribute('disabled', true);
 };
 //создание карточек
 function createCard(card) {
-    const newCard = new Card (card, '#place-template');
+    const newCard = new Card (card, handleClickImage, '#place-template');
     return newCard.getCard();
   }
 
@@ -91,7 +99,7 @@ popupForm.addEventListener('submit', submitForm);
 popupPlace.addEventListener('submit', createNewCard);
 popupButtonEdit.addEventListener('click', () => openPopupPrefiling())
 popupButtonAdd.addEventListener('click', () => openPopup(popupPlace),)
-popupButtonClose.addEventListener('click', () => closePopup(popup))
+popupButtonClose.addEventListener('click', () => closePopup(profilePopup))
 popupPlaceButtonClose.addEventListener('click', () => closePopup(popupPlace))
 
 
