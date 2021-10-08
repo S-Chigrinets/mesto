@@ -3,7 +3,6 @@ import {popupImg, previewImgLink, previewImgTitle} from './constants.js';
 
 
 export default class Card {
-
     constructor(data, selectorTemplate) {
         this._name = data.name;
         this._link = data.link;
@@ -15,16 +14,12 @@ export default class Card {
         return placeElement;
     }
 
-
-
-
     getCard(){
         this._element = this._getCardTemplate();
         this._setEventListeners();
         this._element.querySelector('.element__image').src = this._link;
         this._element.querySelector('.element__image').alt = this._name;
         this._element.querySelector('.element__title').textContent = this._name;
-
         return this._element;
     }
  

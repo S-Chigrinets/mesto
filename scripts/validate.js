@@ -34,12 +34,11 @@ const hasNotInputValues = (inputList) => {
 
 const disableSubmitButton = (buttonElement, inactiveButtonClass) => {
     buttonElement.classList.add(inactiveButtonClass);
-
 }
+
 const enableSubmitButton = (buttonElement, inactiveButtonClass) => {
     buttonElement.classList.remove(inactiveButtonClass);
 };
-
 
 const toggleButtonState = (formElement, inputList, submitButtonSelector, inactiveButtonClass) => {
     const buttonElement = formElement.querySelector(submitButtonSelector);
@@ -48,13 +47,12 @@ const toggleButtonState = (formElement, inputList, submitButtonSelector, inactiv
     } else {
         enableSubmitButton(buttonElement, inactiveButtonClass);
     }
-};
+}
 
 const setEventListeners = (formElement, inputSelector, submitButtonSelector, inputErrorClass, errorClass, inactiveButtonClass) => {
     formElement.addEventListener('submit', (event) => {
         event.preventDefault();
     });
-
     const inputList = Array.from(formElement.querySelectorAll(inputSelector));
     inputList.forEach(inputElement => {
         inputElement.addEventListener('input', () => {

@@ -1,29 +1,10 @@
 import {initialCards} from './initial-cards.js'
-import Card from './Card.js';
-import {popupButtonEdit, popupButtonClose,  popup, profilePopup, popupButtonAdd, popupPlaceButtonClose, popupText, popupName, popupForm, popupFormPlace, profileText, profileName, popupPlace, popupSubmitPlace, popupLink, buttonCloseImg, popupImg, disabledButton, elements
+import Card from './Card.js'
+import FormValidator from './FormValidator.js'
+import {popupButtonEdit, popupButtonClose,  popup, profilePopup, popupButtonAdd, popupPlaceButtonClose, popupText, popupName, popupForm, popupFormPlace, profileText, profileName, popupPlace, popupSubmitPlace, popupLink, buttonCloseImg, popupImg, disabledButton, elements, validityConfig
 } from './constants.js';
 
-/*const popupButtonEdit = document.querySelector('.profile__button-edit'); // кнопка открытия попапа редактирования "имя" и "о себе" 
-const popupButtonClose = document.querySelector('.popup__button-close'); // кнопка закрытия попапа редактирования "имя" и "о себе" 
-const popup = document.querySelector('.popup');
-const profilePopup = document.querySelector('.popup-profile');
-const popupButtonAdd = document.querySelector('.profile__button-add');
-const popupPlaceButtonClose = document.querySelector('.popup-place__button-close');
-const popupText = document.querySelector('.popup__input_text_about-myself');
-const popupName = document.querySelector('.popup__input_text_name');
-const popupForm = document.querySelector('.popup__form');
-const popupFormPlace = document.querySelector('.popup__form-place')
-const profileText = document.querySelector('.profile__input-about-me');
-const profileName = document.querySelector('.profile__input-name');
-const popupPlace = document.querySelector('.popup-place');
-const popupSubmitPlace = document.querySelector('.popup__input_text_place');
-const popupLink = document.querySelector('.popup__input_text_link');
-const popupImgCont = document.querySelector('.popup-open-photo__container');
-const buttonCloseImg = document.querySelector('.popup-open-photo__button-close');
-const clickOnImg = document.querySelector('.element__image');
-const popupImg = document.querySelector('.popup-open-photo');
-const titleImg = document.querySelector('.element__title');
-const elements = document.querySelector('.elements');*/
+
 let openedPopup;
 
 export function openPopup(popup) //функция открытия попапа 
@@ -69,38 +50,42 @@ function submitForm(evt) // функция отправки формы(в про
 const inactiveButton = (disabledButton) => {
     disabledButton.classList.add('popup__button-save_inactive')
 };
-
-
-
+//создание карточек
 function createCard(card) {
-    const newCard = new Card (card, '#place-template');//Создаём класс дял каждой карточки,передаём темплейт,
+    const newCard = new Card (card, '#place-template');
     return newCard.getCard();
   }
 
 const createNewCard = (evt) => {
     evt.preventDefault();
-
     const newCard  = {
         name: popupSubmitPlace.value,
         link: popupLink.value,
     };
     createCard(newCard);
-    elements.prepend(createCard(newCard)); // пихаем карточку в конец блока
-    
+    elements.prepend(createCard(newCard)); 
      popupFormPlace.reset();
     inactiveButton(disabledButton)
     closePopup(popupPlace);
 }
 
 initialCards.forEach((card) => {
-    elements.prepend(createCard(card)); // пихаем карточку в конец блока
+    elements.prepend(createCard(card));
   })
+//валидация
+  const profileValidate = new FormValidator(validityConfig, popupForm );
+  profileValidate.enableValidation();
+  const cardFormElement = new FormValidator(validityConfig, popupPlace);
+  cardFormElement.enableValidation();
+
+
+
 
 function closePopupImg() // функция закрытия попапа "Открыть картинку" 
 {
     closePopup(popupImg);
 }
-
+//слушатели
 buttonCloseImg.addEventListener('click', closePopupImg)
 popupForm.addEventListener('submit', submitForm);
 popupPlace.addEventListener('submit', createNewCard);
@@ -108,6 +93,8 @@ popupButtonEdit.addEventListener('click', () => openPopupPrefiling())
 popupButtonAdd.addEventListener('click', () => openPopup(popupPlace),)
 popupButtonClose.addEventListener('click', () => closePopup(popup))
 popupPlaceButtonClose.addEventListener('click', () => closePopup(popupPlace))
+
+
 
 
 
