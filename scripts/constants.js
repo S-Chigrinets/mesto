@@ -1,6 +1,5 @@
 export const popupButtonEdit = document.querySelector('.profile__button-edit'); // кнопка открытия попапа редактирования "имя" и "о себе" 
 export const popupButtonClose = document.querySelector('.popup__button-close'); // кнопка закрытия попапа редактирования "имя" и "о себе" 
-export const popup = document.querySelector('.popup');
 export const profilePopup = document.querySelector('.popup-profile');
 export const popupButtonAdd = document.querySelector('.profile__button-add');
 export const popupPlaceButtonClose = document.querySelector('.popup-place__button-close');
